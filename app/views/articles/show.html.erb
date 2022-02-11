@@ -1,0 +1,10 @@
+<h1> <%= @article.title %> </h1> <!-- exibir variavel -->
+
+<p> <%= @article.body %> </p> <!-- exibir variavel -->
+
+<%= link_to 'Editar', edit_article_path(@article), class: 'btn btn-secondary' %> <!-- editar -->
+<%= link_to "Destroy", article_path(@article), data: { 
+    turbo_method: :delete,
+    turbo_confirm: "tem certeza que que apagar?"
+}, class: 'btn btn-secondary' %> <!-- apagar -->
+<%= link_to 'Voltar', root_path, class: 'btn btn-secondary' %> <!-- retornar a pagina inicial -->

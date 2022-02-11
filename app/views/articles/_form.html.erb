@@ -1,0 +1,22 @@
+<%= form_with model: article do |form| %>  <!-- padronizando formulario -->
+    <div>
+        <%= form.label :title %></br>
+        <%= form.text_field :title %>
+        <% article.errors.full_messages_for(:title).each do |message| %> <!-- chamando mensagem de erro -->
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    </br>
+    <div>
+        <%= form.label :body %></br>
+        <%= form.text_area :body %>
+        <% article.errors.full_messages_for(:body).each do |message| %> <!-- chamando mensagem de erro -->
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    </br>
+    <div>
+        <%= form.submit %> <!-- enviar formulario -->
+        <%= link_to 'Voltar', root_path, class: 'btn btn-secondary' %> <!-- retornar a pagina inicial -->
+    </div>
+<% end %>

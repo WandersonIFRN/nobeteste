@@ -1,0 +1,42 @@
+<%= form_with(model: contum) do |form| %>
+  <% if contum.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(contum.errors.count, "error") %> prohibited this contum from being saved:</h2>
+
+      <ul>
+        <% contum.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label :cpf, style: "display: block" %>
+    <%= form.text_field :cpf %>
+  </div>
+
+  <div>
+    <%= form.label :senha, style: "display: block" %>
+    <%= form.text_field :senha %>
+  </div>
+
+  <div>
+    <%= form.label :tipo, style: "display: block" %>
+    <%= form.text_field :tipo %>
+  </div>
+
+  <div>
+    <%= form.label :saldo, style: "display: block" %>
+    <%= form.text_field :saldo %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

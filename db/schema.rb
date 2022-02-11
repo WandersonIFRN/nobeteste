@@ -10,6 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2022_02_11_050539) do
 
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.float "valor"
+    t.float "saldo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "conta_id", null: false
+    t.index ["conta_id"], name: "index_articles_on_conta_id"
+  end
+
+  create_table "conta", force: :cascade do |t|
+    t.string "nome"
+    t.string "cpf"
+    t.string "senha"
+    t.string "tipo"
+    t.float "saldo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "registers", force: :cascade do |t|
+    t.string "tipo"
+    t.string "descricao"
+    t.float "valor"
+    t.float "saldo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "conta_id", null: false
+    t.index ["conta_id"], name: "index_registers_on_conta_id"
+  end
+
+  add_foreign_key "articles", "conta", column: "conta_id"
+  add_foreign_key "registers", "conta", column: "conta_id"
 end

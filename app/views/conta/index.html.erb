@@ -1,0 +1,20 @@
+<!--<p style="color: green"><%= notice %></p>-->
+<center>
+  <h1 style="display: inline">Contas</h1>
+  <%= link_to 'Novo', new_contum_path, class: 'btn btn-secondary', style:"margin: 0 1em 1em 1em" %> <!-- chamar view para novo -->
+</center>
+<div class="container">
+<div id="conta" class="row">
+  <% @conta.each do |contum| %>
+    <div class="card" style="max-width:20%">
+      <div class="card-body">
+        <%= render contum %>
+        <p>
+          <%= link_to "Show this contum", contum %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
+

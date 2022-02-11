@@ -1,0 +1,37 @@
+<%= form_with(model: register) do |form| %>
+  <% if register.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(register.errors.count, "error") %> prohibited this register from being saved:</h2>
+
+      <ul>
+        <% register.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :tipo, style: "display: block" %>
+    <%= form.text_field :tipo %>
+  </div>
+
+  <div>
+    <%= form.label :descricao, style: "display: block" %>
+    <%= form.text_field :descricao %>
+  </div>
+
+  <div>
+    <%= form.label :valor, style: "display: block" %>
+    <%= form.text_field :valor %>
+  </div>
+
+  <div>
+    <%= form.label :saldo, style: "display: block" %>
+    <%= form.text_field :saldo %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
