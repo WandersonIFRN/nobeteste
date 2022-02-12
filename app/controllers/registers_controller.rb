@@ -1,4 +1,5 @@
 class RegistersController < ApplicationController
+  before_action :authenticate_user!, except: %i[ index ]
   before_action :set_register, only: %i[ show edit update destroy ]
 
   # GET /registers or /registers.json
@@ -12,7 +13,7 @@ class RegistersController < ApplicationController
 
   # GET /registers/new
   def new
-    @register = Register.new
+    @register = current_user.register.new
   end
 
   # GET /registers/1/edit
@@ -21,7 +22,7 @@ class RegistersController < ApplicationController
 
   # POST /registers or /registers.json
   def create
-    @register = Register.new(register_params)
+    @register = current_user.register.new(register_params)
 
     respond_to do |format|
       if @register.save

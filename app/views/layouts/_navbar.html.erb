@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <%= link_to 'Home', root_path, class: 'nav-link active' %> <!-- retornar a pagina inicial -->
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Depósitos</a>
@@ -25,6 +25,7 @@
             <a class="nav-link disabled">Saldo</a>
         </li>
         </ul>
+        <%= render 'layouts/user_link' %>
     </div>
     </div>
 </nav>

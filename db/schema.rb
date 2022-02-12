@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_050539) do
+ActiveRecord::Schema.define(version: 2022_02_12_031455) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 2022_02_11_050539) do
     t.float "saldo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "conta_id", null: false
-    t.index ["conta_id"], name: "index_articles_on_conta_id"
   end
 
   create_table "conta", force: :cascade do |t|
@@ -40,10 +38,26 @@ ActiveRecord::Schema.define(version: 2022_02_11_050539) do
     t.float "saldo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "conta_id", null: false
-    t.index ["conta_id"], name: "index_registers_on_conta_id"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_registers_on_user_id"
   end
 
-  add_foreign_key "articles", "conta", column: "conta_id"
-  add_foreign_key "registers", "conta", column: "conta_id"
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
+    t.string "confirmation_token"
+    t.datetime "confirmed_at", precision: 6
+    t.datetime "confirmation_sent_at", precision: 6
+    t.string "unconfirmed_email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "registers", "users"
 end
