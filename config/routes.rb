@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users do
-    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
-  end
+  devise_for :users
   resources :registers
   resources :conta
-  root 'registers#index'
+  devise_scope :user do
+    authenticated do
+      root 'registers#index'
+    end
+  
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 #  get '/articles', to: 'articles#index'
 #  get '/articles/:id', to: 'articles#show'
 
-  resources :articles #chamando resources o qual possui rotas construidas
+  
+  resources :articles #chamando resources
 end
