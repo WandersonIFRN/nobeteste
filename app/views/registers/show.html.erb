@@ -1,10 +1,12 @@
 <!--<p style="color: green"><%= notice %></p>-->
-
-<%= render @register %>
-
-<div>
-  <%= link_to "Edit this register", edit_register_path(@register) %> |
-  <%= link_to "Back to registers", registers_path %>
-
-  <%= button_to "Destroy this register", @register, method: :delete %>
-</div>
+<center>
+    <% if @register.user_id == current_user.id %>
+      <%= render @register %>
+      <h4>ID usuario: <%= @register.user_id %></h4>
+<!--      <div style="margin-top: 1em"><%= link_to "Edit this register", edit_register_path(@register), class: 'btn btn-secondary', style:"margin-right: 1em"%></div>
+      <div style="margin-top: 1em"><%= button_to "Destroy this register", @register, method: :delete, class: 'btn btn-danger' %></div>-->
+      <div style="margin-top: 1em"><%= link_to "Back to registers", registers_path, class: 'btn btn-secondary' %></div>
+    <% else %>
+      <h4>Esse registro não pertence a esse Usuario</h4>
+    <% end %>
+</center>

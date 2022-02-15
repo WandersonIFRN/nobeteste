@@ -1,10 +1,13 @@
-<h1>Editing register</h1>
-
-<%= render "form", register: @register %>
-
-<br>
-
-<div>
-  <%= link_to "Show this register", @register %> |
-  <%= link_to "Back to registers", registers_path %>
-</div>
+<center>
+  <h1>Editing register</h1>
+  <% if @register.user_id == current_user.id %>
+    <%= render "form", register: @register %>
+    <br>
+    <div>
+      <%= link_to "Show this register", @register %> |
+      <%= link_to "Back to registers", registers_path %>
+    </div>
+  <% else %>
+    <h4>Esse registro não pertence a esse Usuario</h4>
+  <% end %>
+</center>

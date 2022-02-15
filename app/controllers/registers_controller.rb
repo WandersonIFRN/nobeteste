@@ -4,7 +4,8 @@ class RegistersController < ApplicationController
 
   # GET /registers or /registers.json
   def index
-    @registers = Register.all
+   @registers = Register.all
+#  @highlights = Register.filter_register(params[:session])
   end
 
   # GET /registers/1 or /registers/1.json
