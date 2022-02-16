@@ -1,9 +1,9 @@
-<h1>New register</h1>
+<center style="margin: 1em 2em">
+  <h1>New register</h1>
 
-<%= render "form", register: @register %>
+  <%= render "form", register: @register %>
 
-<br>
-
-<div>
-  <%= link_to "Back to registers", registers_path %>
-</div>
+  <div style="margin-top: 1em">
+    <%= link_to "Back to registers", registers_path, class: 'btn btn-secondary' %>
+  </div>
+</center>

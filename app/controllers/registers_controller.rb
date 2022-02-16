@@ -4,7 +4,7 @@ class RegistersController < ApplicationController
 
   # GET /registers or /registers.json
   def index
-   @registers = Register.all
+    @registers = Register.all
 #  @highlights = Register.filter_register(params[:session])
   end
 
@@ -24,6 +24,28 @@ class RegistersController < ApplicationController
   # POST /registers or /registers.json
   def create
     @register = current_user.register.new(register_params)
+    
+    if @register.valor 
+      if @register.tipo=='Deposito'
+        @register.saldo = current_user.saldo + @register.valor
+        current_user.saldo += @register.valor
+        current_user.save
+      end
+      if @register.tipo=='Saque' or @register.tipo=='Transferencia'
+        if  @register.tipo=='Transferencia'
+          @usuario = User.find(@register.transferir)
+          @usuario.saldo += @register.valor
+          @usuario.save
+          @register.saldo = current_user.saldo - @register.valor
+          current_user.saldo -= @register.valor
+          current_user.save
+        else
+          @register.saldo = current_user.saldo - @register.valor
+          current_user.saldo -= @register.valor
+          current_user.save
+        end
+      end
+    end
 
     respond_to do |format|
       if @register.save
@@ -67,6 +89,6 @@ class RegistersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def register_params
-      params.require(:register).permit(:tipo, :descricao, :valor, :saldo)
+      params.require(:register).permit(:tipo, :descricao, :valor)
     end
 end

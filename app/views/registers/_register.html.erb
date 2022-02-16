@@ -1,22 +1,27 @@
-<div id="<%= dom_id register %>">
-  <p>
+<div id="<%= dom_id register %>" style="display: flex">
+  <p style="margin: 1em">
     <strong>Tipo:</strong>
     <%= register.tipo %>
   </p>
 
-  <p>
+  <p style="margin: 1em">
     <strong>Descricao:</strong>
     <%= register.descricao %>
   </p>
 
-  <p>
+  <p style="margin: 1em">
     <strong>Valor:</strong>
     <%= register.valor %>
   </p>
 
-  <p>
+  <p style="margin: 1em">
     <strong>Saldo:</strong>
     <%= register.saldo %>
+  </p>
+
+  <p style="margin: 1em">
+    <strong>Transferencia:</strong>
+    <%= register.transferir %>
   </p>
 
 </div>

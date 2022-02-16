@@ -12,10 +12,19 @@
   <% end %>
 
   <div>
+    <h5>Saldo: <%=current_user.saldo %></h5>
+  </div>
+
+  <%= form.select :tipo, [["Depositar", "Deposito"], ["Sacar", "Saque"], ["Transferir", "Transferencia"]] %>
+
+  
+
+<!--
+  <div>
     <%= form.label :tipo, style: "display: block" %>
     <%= form.text_field :tipo %>
   </div>
-
+-->
   <div>
     <%= form.label :descricao, style: "display: block" %>
     <%= form.text_field :descricao %>
@@ -25,13 +34,19 @@
     <%= form.label :valor, style: "display: block" %>
     <%= form.text_field :valor %>
   </div>
-
+<!--
   <div>
     <%= form.label :saldo, style: "display: block" %>
     <%= form.text_field :saldo %>
   </div>
+-->
 
   <div>
+    <%= form.label :'transferir', style: "display: block" %>
+    <%= form.number_field :transferir %>
+  </div>
+
+  <div style="margin-top:1em">
     <%= form.submit %>
   </div>
 <% end %>
