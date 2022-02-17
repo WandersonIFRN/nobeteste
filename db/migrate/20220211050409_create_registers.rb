@@ -5,6 +5,7 @@ class CreateRegisters < ActiveRecord::Migration[7.0]
       t.string :descricao
       t.float :valor
       t.float :saldo
+      t.float :transferir
 
       t.timestamps
     end

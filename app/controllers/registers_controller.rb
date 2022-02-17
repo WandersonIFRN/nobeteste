@@ -36,6 +36,10 @@ class RegistersController < ApplicationController
           @usuario = User.find(@register.transferir)
           @usuario.saldo += @register.valor
           @usuario.save
+          @registerRecebedor = @register
+          @registerRecebedor.user_id = @usuario.id
+          @registerRecebedor.saldo = @usuario.saldo + @registerRecebedor.valor
+          #@registerRecebedor.save
           @register.saldo = current_user.saldo - @register.valor
           current_user.saldo -= @register.valor
           current_user.save
@@ -89,6 +93,6 @@ class RegistersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def register_params
-      params.require(:register).permit(:tipo, :descricao, :valor)
+      params.require(:register).permit(:tipo, :descricao, :valor, :transferir)
     end
 end
