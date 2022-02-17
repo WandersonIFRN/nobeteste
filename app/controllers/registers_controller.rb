@@ -54,6 +54,17 @@ class RegistersController < ApplicationController
 
     respond_to do |format|
       if @register.save
+        if @register.tipo=='Transferencia'
+          if (datahour(@register.created_at) >= '9' and datahour(@register.created_at) <= '18') and (dataday(@register.created_at) == 'Monday' or 'Tuesday' or 'Wednesday' or'Thursday' or 'Friday')
+            current_user.saldo -= 5
+          else
+            current_user.saldo -= 7
+          end
+          if @register.valor > 1000
+            current_user.saldo -= 10
+          end
+          current_user.save
+        end
         format.html { redirect_to register_url(@register), notice: "Register was successfully created." }
         format.json { render :show, status: :created, location: @register }
       else
@@ -90,6 +101,14 @@ class RegistersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_register
       @register = Register.find(params[:id])
+    end
+
+    
+    def dataday(datetime)
+      datetime.strftime('%A')
+    end
+    def datahour(datetime)
+        datetime.strftime('%-H')
     end
 
     # Only allow a list of trusted parameters through.
