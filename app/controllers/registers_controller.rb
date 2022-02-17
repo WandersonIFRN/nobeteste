@@ -4,7 +4,8 @@ class RegistersController < ApplicationController
 
   # GET /registers or /registers.json
   def index
-    @registers = Register.all
+    @registers = current_user.register.all.filter_by_registermensal(params[:month_year])
+    @registermensal = current_user.register.group_by_month(:created_at, format: '%B %Y').count
 #  @highlights = Register.filter_register(params[:session])
   end
 

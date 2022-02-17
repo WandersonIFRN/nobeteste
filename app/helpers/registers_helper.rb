@@ -1,5 +1,5 @@
 module RegistersHelper
     def datacao(datetime)
-        datetime.strftime('%H:%M:%S, %e / %B / %Y')
+        datetime.strftime('%e / %m / %Y')
     end
 end

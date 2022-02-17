@@ -3,16 +3,18 @@
 <h1 style="display: inline">Registers</h1>
 <%= link_to 'Novo', new_register_path, class: 'btn btn-secondary', style:"margin: 0 1em 1em 1em" %> <!-- chamar view para novo -->
 </center>
-
-<div id="registers" style="margin: 0 3em;">
-  <% @registers.each do |register| %>
-    <% if register.user_id == current_user.id %>
-      <div style="display: flex; margin-bottom: 1em;" class="border border-2">
-        <%= render register %>
-        <p  style="margin: 0.5em">
-          <%= link_to "Show this register", register, class: 'btn btn-secondary' %>
-        </p>
-      </div>
+<div  style="display:flex">
+  <div style="width: 15%;"> <%= render 'registermensal' %> </div>
+  <div id="registers" style="margin: 0 3em;width: 85%;">
+    <% @registers.each do |register| %>
+      <% if register.user_id == current_user.id %>
+        <div style="display: flex; margin-bottom: 1em;" class="border border-2">
+          <%= render register %>
+          <p  style="margin: 0.5em">
+            <%= link_to "Abrir", register, class: 'btn btn-secondary' %>
+          </p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
