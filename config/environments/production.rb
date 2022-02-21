@@ -90,4 +90,21 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  # Email
+  config.action_mailer.default_url_options = { host: 'testenobewcs.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.zoho.com',
+    domain: Rails.application.credentials.zoho[:domain],
+    port: 465,
+    user_name: Rails.application.credentials.zoho['mutest1000@gmail.com'],
+    password: Rails.application.credentials.zoho['wlwhgcimopaadjkb'],
+    authentication: 'login',
+    ssl: true,
+    tls: true,
+    enable_starttls_auto: true
+  }
+
 end
