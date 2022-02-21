@@ -99,9 +99,9 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     domain: 'gmail.com',
     port: 465,
-    user_name: 'testenobewcs',
+    user_name: 'mutest1000@gmail.com',
     password: 'wlwhgcimopaadjkb',
-    authentication: 'login',
+    authentication: 'testenobewcs',
   }
 
 end
