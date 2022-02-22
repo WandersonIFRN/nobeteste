@@ -1,4 +1,6 @@
-<h2>Sign up</h2>
+<center>
+<div style="border:solid; max-width:25%; margin: 1em">
+<h2 style="margin: 10px 0">Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -26,9 +28,11 @@
     <%= f.number_field :saldo, autocomplete: "saldo inicial" %>
   </div>
 
-  <div class="actions">
+  <div class="actions" style="margin: 10px 0">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
+</div>
 <%= render "devise/shared/links" %>
+</center>

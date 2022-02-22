@@ -1,13 +1,15 @@
-<div class="p-4">
-    <h4 class="fst-italic">Meses</h4>
-    <ol class="list-unstyled mb-0">
-        <% @registermensal.each do |month_year, count| %>
-            
-            <li>
-                <%= link_to "#{month_year}(#{count})", registers_path(month_year: month_year),
-                    class:"p-2 link-secondary #{'filter-registermensal' if month_year == params[:month_year]}" %>
-            </li>
+<center>
+    <div class="border border-3" style="margin-left: 1.5em">
+        <h4 class="fst-italic">Meses</h4>
+        <ol class="list-unstyled mb-0">
+            <% @registermensal.each do |month_year, count| %>
+                
+                <li>
+                    <%= link_to "#{month_year}(#{count})", registers_path(month_year: month_year),
+                        class:"p-2 link-secondary #{'filter-registermensal' if month_year == params[:month_year]}" %>
+                </li>
 
-        <% end %>
-    </ol>
-</div>
+            <% end %>
+        </ol>
+  </div>
+</center>

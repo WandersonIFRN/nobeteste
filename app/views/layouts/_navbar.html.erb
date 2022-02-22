@@ -10,16 +10,7 @@
             <%= link_to 'Home', root_path, class: 'nav-link active' %> <!-- retornar a pagina inicial -->
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Depósitos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Saques</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Transferências</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">extrato</a>
+            <%= link_to 'Registro', new_register_path, class: 'nav-link active' %> <!-- retornar a pagina inicial -->
         </li>
         <li class="nav-item">
             <a class="nav-link disabled">Saldo: <%= render 'layouts/user_saldo' %></a>
