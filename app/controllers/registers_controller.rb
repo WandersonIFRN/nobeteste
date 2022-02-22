@@ -37,10 +37,10 @@ class RegistersController < ApplicationController
           @usuario = User.find(@register.transferir)
           @usuario.saldo += @register.valor
           @usuario.save
-          @registerRecebedor = @register
+          @registerRecebedor = @usuario.register.new(register_params)
           @registerRecebedor.user_id = @usuario.id
           @registerRecebedor.saldo = @usuario.saldo + @registerRecebedor.valor
-          #@registerRecebedor.save
+          @registerRecebedor.save
           @register.saldo = current_user.saldo - @register.valor
           current_user.saldo -= @register.valor
           current_user.save
