@@ -1,4 +1,6 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<center>
+<div style="border:solid; max-width:350px; margin: 1em">
+<h2 style="margin: 10px 0">Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -13,11 +15,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <i>(nova senha)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 
@@ -27,17 +28,18 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <i>(senha atual)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
-  <div class="actions">
+  <div class="actions" style="margin: 10px 0">
     <%= f.submit "Update" %>
   </div>
 <% end %>
 
+</div>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Encerrar Conta
 </button>
 
@@ -62,4 +64,6 @@
 
 
 
-<%= link_to "Back", :back %>
+<%= link_to "Voltar", :back , class:'btn btn-primary'%>
+
+</center>
